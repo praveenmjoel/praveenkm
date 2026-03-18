@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praveen Kumar M — Payments Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0B1623;
+    --navy-2: #111f30;
+    --navy-3: #17293e;
+    --gold: #C9952A;
+    --gold-light: #E8C97A;
+    --gold-dim: rgba(201,149,42,0.18);
+    --white: #F5F1EA;
+    --white-dim: rgba(245,241,234,0.55);
+    --white-faint: rgba(245,241,234,0.12);
+    --border: rgba(201,149,42,0.22);
+    --border-faint: rgba(245,241,234,0.08);
+    --sans: 'DM Sans', sans-serif;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 5vw;
+    border-bottom: 1px solid transparent;
+    transition: background 0.4s, border-color 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(11,22,35,0.96);
+    border-color: var(--border-faint);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 5vw 6rem 7vw;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem; height: 1px;
+    background: var(--gold);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-weight: 300;
+    color: var(--white-dim);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-statement {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--white-dim);
+    line-height: 1.9;
+    max-width: 38ch;
+    margin-bottom: 3rem;
+    border-left: 1px solid var(--gold);
+    padding-left: 1.5rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    border: none;
+    padding: 0.9rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 0.9rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.25s, color 0.25s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-ring {
+    width: 520px; height: 520px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    position: absolute;
+    animation: rotate 40s linear infinite;
+  }
+  .hero-ring-2 {
+    width: 380px; height: 380px;
+    border: 1px solid rgba(201,149,42,0.1);
+    border-radius: 50%;
+    position: absolute;
+    animation: rotate 28s linear infinite reverse;
+  }
+  .hero-photo-frame {
+    width: 320px; height: 400px;
+    border: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    background: var(--navy-3);
+  }
+  .hero-photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--navy-3) 0%, #0e2035 100%);
+  }
+  .photo-initials {
+    font-family: var(--serif);
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.6;
+    line-height: 1;
+  }
+  .photo-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+  .hero-stats {
+    position: absolute;
+    bottom: 3rem;
+    right: 5vw;
+    display: flex;
+    gap: 2.5rem;
+    z-index: 3;
+  }
+  .stat { text-align: right; }
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    display: block;
+    margin-top: 0.3rem;
+  }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 7vw;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+  }
+  .scroll-line {
+    width: 1px; height: 2.5rem;
+    background: var(--white-faint);
+    animation: scrollpulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollpulse {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 7rem 7vw; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 4rem;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .section-heading em { font-style: italic; color: var(--gold-light); }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-faint);
+    margin: 0 7vw;
+    width: calc(100% - 14vw);
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--navy-2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .about-left { position: sticky; top: 8rem; }
+  .about-portrait {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait-placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+  }
+  .portrait-initials {
+    font-family: var(--serif); font-size: 6rem; font-weight: 300;
+    color: var(--gold); opacity: 0.4; line-height: 1;
+  }
+  .about-portrait-label {
+    position: absolute; bottom: 1.5rem; left: 1.5rem;
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--white-dim);
+    background: rgba(11,22,35,0.8);
+    padding: 0.4rem 0.8rem;
+  }
+  .credentials {
+    margin-top: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .credential {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.8rem; color: var(--white-dim);
+  }
+  .credential-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .about-right {}
+  .about-lead {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.01em;
+  }
+  .about-body {
+    font-size: 0.92rem; color: var(--white-dim);
+    line-height: 1.95; margin-bottom: 1.5rem;
+  }
+  .timeline { margin-top: 3rem; }
+  .timeline-heading {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+  }
+  .timeline-item {
+    display: grid; grid-template-columns: 8rem 1fr;
+    gap: 1.5rem; margin-bottom: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--border-faint);
+  }
+  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .timeline-year {
+    font-family: var(--mono); font-size: 0.72rem;
+    color: var(--gold); letter-spacing: 0.08em;
+    padding-top: 0.15rem;
+  }
+  .timeline-role {
+    font-size: 0.88rem; font-weight: 500; color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .timeline-company {
+    font-size: 0.8rem; color: var(--white-dim);
+  }
+
+  /* ─── EXPERTISE ─── */
+  #expertise { background: var(--navy); }
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 4rem;
+    border: 1px solid var(--border-faint);
+  }
+  .expertise-card {
+    padding: 2.5rem;
+    border-right: 1px solid var(--border-faint);
+    border-bottom: 1px solid var(--border-faint);
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .expertise-card:hover { background: var(--white-faint); }
+  .expertise-card:hover .card-accent { width: 100%; }
+  .card-accent {
+    position: absolute; top: 0; left: 0;
+    height: 1px; width: 0;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+  .expertise-num {
+    font-family: var(--mono); font-size: 0.65rem;
+    color: var(--gold); letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .expertise-icon {
+    font-size: 1.6rem; margin-bottom: 1.2rem;
+    filter: saturate(0) brightness(1.5);
+    display: block;
+  }
+  .expertise-title {
+    font-family: var(--serif); font-size: 1.35rem;
+    font-weight: 400; color: var(--white);
+    margin-bottom: 0.8rem; line-height: 1.2;
+  }
+  .expertise-desc {
+    font-size: 0.82rem; color: var(--white-dim);
+    line-height: 1.85;
+  }
+
+  /* ─── WRITING ─── */
+  #writing { background: var(--navy-2); }
+  .writing-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .article-card {
+    border: 1px solid var(--border-faint);
+    padding: 2.2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  .article-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+  .article-tag {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .article-title {
+    font-family: var(--serif); font-size: 1.25rem;
+    font-weight: 400; line-height: 1.35;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .article-excerpt {
+    font-size: 0.8rem; color: var(--white-dim);
+    line-height: 1.8; margin-bottom: 1.8rem;
+  }
+  .article-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.65rem;
+    color: var(--white-faint); letter-spacing: 0.08em;
+    border-top: 1px solid var(--border-faint);
+    padding-top: 1.2rem;
+  }
+  .article-arrow { color: var(--gold); font-size: 1rem; }
+
+  /* ─── SPEAKING ─── */
+  #speaking { background: var(--navy); }
+  .speaking-grid {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: 6rem;
+    margin-top: 4rem;
+  }
+  .speaking-left {}
+  .speaking-intro {
+    font-family: var(--serif); font-size: 1.2rem;
+    font-weight: 300; line-height: 1.6;
+    color: var(--white-dim); margin-bottom: 2.5rem;
+  }
+  .speaking-invite {
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+  }
+  .speaking-invite-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+  .speaking-invite-text {
+    font-size: 0.85rem; color: var(--white-dim);
+    line-height: 1.8; margin-bottom: 1.2rem;
+  }
+  .speaking-right {}
+  .talk-item {
+    display: grid; grid-template-columns: 1fr 4fr;
+    gap: 2rem; padding: 1.8rem 0;
+    border-bottom: 1px solid var(--border-faint);
+  }
+  .talk-item:first-child { border-top: 1px solid var(--border-faint); }
+  .talk-venue {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; color: var(--gold);
+    padding-top: 0.15rem;
+  }
+  .talk-title {
+    font-size: 0.9rem; font-weight: 400; color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .talk-desc { font-size: 0.78rem; color: var(--white-dim); line-height: 1.7; }
+  .talk-badge {
+    display: inline-block; margin-top: 0.6rem;
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--navy-2); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: 6rem;
+    margin-top: 4rem;
+  }
+  .contact-left {}
+  .contact-statement {
+    font-family: var(--serif); font-size: 1.25rem;
+    font-weight: 300; line-height: 1.6;
+    color: var(--white-dim); margin-bottom: 3rem;
+  }
+  .contact-detail {
+    margin-bottom: 1.5rem;
+  }
+  .contact-detail-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .contact-detail-value {
+    font-size: 0.88rem; color: var(--white);
+  }
+  .contact-right {}
+  .form-row { margin-bottom: 1.5rem; }
+  .form-label {
+    display: block; font-family: var(--mono);
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .form-input {
+    width: 100%; background: var(--white-faint);
+    border: 1px solid var(--border-faint);
+    color: var(--white); font-family: var(--sans);
+    font-size: 0.88rem; font-weight: 300;
+    padding: 0.9rem 1.2rem;
+    outline: none;
+    transition: border-color 0.25s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: var(--white-faint); }
+  textarea.form-input { resize: vertical; min-height: 130px; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border-faint);
+    padding: 3rem 7vw;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: var(--serif); font-size: 1.1rem;
+    font-weight: 300; color: var(--white);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.12em; color: var(--white-faint);
+  }
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--white-dim);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── TICKER ─── */
+  .ticker-wrap {
+    background: var(--gold-dim);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden; padding: 0.85rem 0;
+  }
+  .ticker {
+    display: flex; gap: 4rem;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+  }
+  .ticker-item {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); white-space: nowrap;
+  }
+  .ticker-sep { color: var(--border); }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Praveen <span>Kumar M</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Payments Leader</div>
+    <h1 class="hero-name">Praveen<br><em>Kumar M</em></h1>
+    <p class="hero-title">Head of Global Disbursements &middot; Uber &middot; IIM Ahmedabad</p>
+    <p class="hero-statement">
+      Every payout that reaches an Uber driver — anywhere in the world — flows through systems my team built. Millions of transactions. Dozens of markets. One standard: it works, every time.
+    </p>
+    <div class="hero-ctas">
+      <a href="#writing" class="btn-primary">Read My Writing</a>
+      <a href="#contact" class="btn-outline">Let's Connect</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-ring"></div>
+      <div class="hero-ring-2"></div>
+      <div class="hero-photo-frame">
+        <div class="hero-photo-placeholder">
+          <div class="photo-initials">PKM</div>
+          <div class="photo-label">Your photo here</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">9+</span>
+        <span class="stat-label">Years at Uber</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">30+</span>
+        <span class="stat-label">Markets</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">15</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Disbursements Infrastructure</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Cross-Border Payouts</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">PSP Strategy</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Global Payments at Scale</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">IIM Ahmedabad</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Fintech Leadership</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Disbursements Infrastructure</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Cross-Border Payouts</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">PSP Strategy</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Global Payments at Scale</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">IIM Ahmedabad</span>
+    <span class="ticker-sep">&middot;</span>
+    <span class="ticker-item">Fintech Leadership</span>
+    <span class="ticker-sep">&middot;</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-eyebrow">About</div>
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="about-portrait">
+        <div class="portrait-placeholder">
+          <div class="portrait-initials">PKM</div>
+        </div>
+        <div class="about-portrait-label">Madurai, Tamil Nadu</div>
+      </div>
+      <div class="credentials">
+        <div class="credential"><div class="credential-dot"></div>MBA &mdash; IIM Ahmedabad, 2014</div>
+        <div class="credential"><div class="credential-dot"></div>B.E. Civil Engineering &mdash; Anna University, 2009</div>
+        <div class="credential"><div class="credential-dot"></div>Head of Disbursements &mdash; Uber, 2017&ndash;Present</div>
+        <div class="credential"><div class="credential-dot"></div>15 Years of Leadership Experience</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <h2 class="section-heading reveal">Built for <em>scale</em>,<br>designed for trust.</h2>
+      <p class="about-lead reveal reveal-delay-1">
+        I lead the systems that make sure earners get paid — reliably, on time, across every market Uber operates in. That's the job. Behind it is five years of payments infrastructure, countless PSP integrations, and a deep belief that disbursements is one of the most consequential, and most underrated, problems in fintech.
+      </p>
+      <p class="about-body reveal reveal-delay-2">
+        My path here was unconventional. Civil Engineering at Anna University. Steel Authority of India. An MBA at IIM Ahmedabad. Samsung's Business Innovation team. Leading Paytm's regional operations during demonetisation — one of the most intense periods in Indian payments history. Then Uber, where I spent three years understanding the earner experience from the ground up before pivoting entirely into payments.
+      </p>
+      <p class="about-body reveal reveal-delay-2">
+        I write and speak about disbursements, payout infrastructure, and the future of platform payments. I believe the earner side of money movement — how platforms pay the people who power them — is where the next decade of fintech innovation will be won or lost.
+      </p>
+      <div class="timeline reveal reveal-delay-3">
+        <div class="timeline-heading">Career Arc</div>
+        <div class="timeline-item">
+          <div class="timeline-year">2017 &ndash; Now</div>
+          <div>
+            <div class="timeline-role">Head of Global Disbursements</div>
+            <div class="timeline-company">Uber &mdash; Payments Infrastructure, 30+ Markets</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2016 &ndash; 2017</div>
+          <div>
+            <div class="timeline-role">Regional Sales Lead &mdash; TN &amp; Kerala</div>
+            <div class="timeline-company">Paytm &mdash; During Demonetisation</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2014 &ndash; 2016</div>
+          <div>
+            <div class="timeline-role">Management Trainee &rarr; Business Innovation</div>
+            <div class="timeline-company">Samsung India</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2012 &ndash; 2014</div>
+          <div>
+            <div class="timeline-role">MBA</div>
+            <div class="timeline-company">IIM Ahmedabad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-eyebrow">Expertise</div>
+  <h2 class="section-heading reveal">Where I operate<br>with <em>full authority.</em></h2>
+  <div class="expertise-grid">
+    <div class="expertise-card reveal">
+      <div class="card-accent"></div>
+      <div class="expertise-num">01</div>
+      <div class="expertise-title">Disbursements Infrastructure</div>
+      <p class="expertise-desc">Designing and scaling payout systems that handle millions of transactions daily — across currencies, regulatory environments, and payment rails. Reliability and earner trust at the core.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-1">
+      <div class="card-accent"></div>
+      <div class="expertise-num">02</div>
+      <div class="expertise-title">PSP Strategy &amp; Management</div>
+      <p class="expertise-desc">Navigating the complex world of payment service providers — selection, negotiation, integration architecture, fallback routing, and performance benchmarking across global markets.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-2">
+      <div class="card-accent"></div>
+      <div class="expertise-num">03</div>
+      <div class="expertise-title">Cross-Border Payouts</div>
+      <p class="expertise-desc">Managing the friction and compliance complexity of moving money across borders — currency, correspondent banking, regulatory variance, and real-time rail strategy.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-1">
+      <div class="card-accent"></div>
+      <div class="expertise-num">04</div>
+      <div class="expertise-title">Payments Product Leadership</div>
+      <p class="expertise-desc">Translating operational expertise into product decisions — building and influencing the payments products that sit underneath platform businesses at internet scale.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-2">
+      <div class="card-accent"></div>
+      <div class="expertise-num">05</div>
+      <div class="expertise-title">Fintech Operations at Scale</div>
+      <p class="expertise-desc">End-to-end operations leadership in regulated payments environments — reconciliation, exception management, compliance, and building teams that execute flawlessly at volume.</p>
+    </div>
+    <div class="expertise-card reveal reveal-delay-3">
+      <div class="card-accent"></div>
+      <div class="expertise-num">06</div>
+      <div class="expertise-title">AI in Payment Operations</div>
+      <p class="expertise-desc">Evaluating and deploying intelligent systems for payout success rate optimization, anomaly detection, intelligent routing, and reconciliation automation — from practitioner perspective.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="writing-header">
+    <div>
+      <div class="section-eyebrow">Writing</div>
+      <h2 class="section-heading reveal">Thinking out<br>loud on <em>payments.</em></h2>
+    </div>
+    <a href="#" class="btn-outline" style="align-self: flex-end;">All Articles &rarr;</a>
+  </div>
+  <div class="articles-grid">
+    <div class="article-card reveal">
+      <div class="article-tag">Disbursements</div>
+      <h3 class="article-title">What running global payouts at scale taught me that no textbook does</h3>
+      <p class="article-excerpt">After five years of managing disbursements across 30+ markets, the lessons that matter most aren't the ones you'd find in any fintech curriculum.</p>
+      <div class="article-meta">
+        <span>May 2025</span>
+        <span class="article-arrow">&rarr;</span>
+      </div>
+    </div>
+    <div class="article-card reveal reveal-delay-1">
+      <div class="article-tag">Policy &amp; Infrastructure</div>
+      <h3 class="article-title">India's real-time payout ambition — what the RBI's push means for platforms</h3>
+      <p class="article-excerpt">India is building one of the world's most ambitious real-time payments infrastructures. Here's what that means for the platform businesses that depend on it.</p>
+      <div class="article-meta">
+        <span>May 2025</span>
+        <span class="article-arrow">&rarr;</span>
+      </div>
+    </div>
+    <div class="article-card reveal reveal-delay-2">
+      <div class="article-tag">Earner Economy</div>
+      <h3 class="article-title">Building for earner trust: why disbursements is the most underrated product in platform payments</h3>
+      <p class="article-excerpt">Platforms obsess over checkout conversion. Almost none obsess over how well they pay the people who power their supply side. That's a mistake.</p>
+      <div class="article-meta">
+        <span>June 2025</span>
+        <span class="article-arrow">&rarr;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SPEAKING -->
+<section id="speaking">
+  <div class="section-eyebrow">Speaking</div>
+  <div class="speaking-grid">
+    <div class="speaking-left">
+      <h2 class="section-heading reveal">Conversations<br>worth <em>having.</em></h2>
+      <p class="speaking-intro reveal reveal-delay-1">I speak on disbursements infrastructure, platform payments, and the operational realities of moving money at scale — from a practitioner's perspective, not a consultant's deck.</p>
+      <div class="speaking-invite reveal reveal-delay-2">
+        <div class="speaking-invite-label">Speaking Enquiries</div>
+        <p class="speaking-invite-text">Available for panels, keynotes, and roundtables on payments infrastructure, gig economy financial systems, and fintech leadership. Especially interested in conversations that go beyond the surface level.</p>
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="speaking-right reveal reveal-delay-1">
+      <div class="talk-item">
+        <div class="talk-venue">Global Fintech Fest</div>
+        <div>
+          <div class="talk-title">The Hidden Complexity of Global Payouts</div>
+          <div class="talk-desc">A practitioner's view on what it takes to build disbursements infrastructure that works across every market, currency, and regulatory framework simultaneously.</div>
+          <span class="talk-badge">Upcoming</span>
+        </div>
+      </div>
+      <div class="talk-item">
+        <div class="talk-venue">India Fintech Forum</div>
+        <div>
+          <div class="talk-title">Real-Time Rails and the Gig Economy</div>
+          <div class="talk-desc">How India's payments infrastructure evolution changes the calculus for platforms that depend on fast, reliable earner payouts.</div>
+          <span class="talk-badge">Upcoming</span>
+        </div>
+      </div>
+      <div class="talk-item">
+        <div class="talk-venue">IIM Ahmedabad</div>
+        <div>
+          <div class="talk-title">Payments Leadership in the Platform Age</div>
+          <div class="talk-desc">Guest lecture on building a career at the intersection of fintech operations and product leadership.</div>
+          <span class="talk-badge">Alumni Series</span>
+        </div>
+      </div>
+      <div class="talk-item">
+        <div class="talk-venue">Merchant Payments<br>Ecosystem India</div>
+        <div>
+          <div class="talk-title">PSP Strategy for Platform Businesses</div>
+          <div class="talk-desc">How to think about payment service provider selection, integration, and management when your payout volumes operate at internet scale.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Connect</div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2 class="section-heading reveal">Let's talk<br><em>payments.</em></h2>
+      <p class="contact-statement reveal reveal-delay-1">
+        Whether you're building in the payments space, thinking about how to scale your disbursements stack, or want to explore what's next in platform fintech — I'm interested in conversations with people who go deep.
+      </p>
+      <div class="contact-detail reveal reveal-delay-2">
+        <div class="contact-detail-label">Location</div>
+        <div class="contact-detail-value">Madurai, Tamil Nadu &mdash; India</div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-2">
+        <div class="contact-detail-label">LinkedIn</div>
+        <div class="contact-detail-value">linkedin.com/in/praveenkm</div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-2">
+        <div class="contact-detail-label">Writing</div>
+        <div class="contact-detail-value">praveenkm.com/writing</div>
+      </div>
+    </div>
+    <div class="contact-right reveal reveal-delay-1">
+      <div class="form-row-2">
+        <div class="form-row">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Company</label>
+          <input type="text" class="form-input" placeholder="Your company">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <label class="form-label">What's on your mind</label>
+        <textarea class="form-input" placeholder="Tell me what you're thinking about..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%; font-size:0.78rem;">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Praveen <span>Kumar M</span></a>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">praveenkm.com &mdash; &copy; 2025</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
